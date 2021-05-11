@@ -1,0 +1,42 @@
+{% extends 'admin/admin_base.html' %}
+{% block content %}
+    <div class="content"><br><br><br><br>
+    <div class="overflow-x-auto">
+     <table class="table">
+         <thead>
+             <tr class="bg-gray-700 dark:bg-dark-1 text-white">
+                 <th class="whitespace-no-wrap"><center>#</center></th>
+                 <th class="whitespace-no-wrap"><center>Email</center></th>
+                 <th class="whitespace-no-wrap"><center>Aktivan email</center></th>
+                 <th class="whitespace-no-wrap"><center>Popust</center></th>
+                 <th class="whitespace-no-wrap"><center>Brisanje</center></th>
+             </tr>
+         </thead>
+         <tbody>
+         {% for cus in customer %}
+             <tr>
+                 <td class="border-b dark:border-dark-5"><center>{{ cus.id }}</center></td>
+                 <td class="border-b dark:border-dark-5"><center>{{ cus.email }}</center></td>
+                 <td class="border-b dark:border-dark-5"><center>{{ cus.confirmed }}</center></td>
+                 {% if cus.discount == True %}
+                 <form method="POST" action="{{ url_for('uncheck_discount', pk=cus.id) }}">
+                 <td class="border-b dark:border-dark-5"><center><input onchange="this.form.submit()" type="checkbox" class="input input--switch border" checked></center></td>
+                 </form>
+                 {% else %}
+                     <form method="POST" action="{{ url_for('check_discount', pk=cus.id) }}">
+                 <td class="border-b dark:border-dark-5"><center><input onchange="this.form.submit()" type="checkbox" class="input input--switch border"></center></td>
+                </form>
+                 {% endif %}
+             <form method="POST" action="{{ url_for('delete_customer', pk=cus.id) }}">
+             <td class="border-b dark:border-dark-5"><center>
+             <button onclick="return confirm('Potvrdi brisanje korisnika {{ cus.email }}');" type="submit" class="button button--sm w-24 inline-block mr-1 mb-2 border border-theme-6 text-theme-6 dark:border-theme-10 dark:text-theme-10">
+                     Obrisi</button></center></td>
+             </form>
+             </tr>
+         {% endfor %}
+         </tbody>
+     </table>
+ </div>
+    </div>
+
+{% endblock %}

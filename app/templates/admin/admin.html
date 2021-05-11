@@ -1,0 +1,168 @@
+{% extends 'admin/admin_base.html' %}
+{% block content %}
+            <div class="content">
+                <!-- BEGIN: Top Bar -->
+                <div class="top-bar">
+                    <!-- BEGIN: Breadcrumb -->
+                    <div class="-intro-x breadcrumb mr-auto hidden sm:flex"> </div>
+                    <!-- END: Breadcrumb -->
+                    <!-- BEGIN: Search -->
+                    <div class="intro-x relative mr-3 sm:mr-6">
+                        <div class="search hidden sm:block">
+                            <form method="POST" action="{{ url_for('search_name') }}">
+                            <input name="search_name" type="text" class="search__input input placeholder-theme-13" placeholder="Naziv artikla">
+                            <i data-feather="search" class="search__icon dark:text-gray-300"></i>
+                            </form>
+                        </div>
+                        <a class="notification sm:hidden" href=""> <i data-feather="search" class="notification__icon dark:text-gray-300"></i> </a>
+                    </div>
+
+                    <!-- BEGIN: Notifications -->
+                    <div class="">
+                        <a href="{{ url_for('logout') }}"> <i data-feather="slash" class="notification__icon dark:text-gray-300"></i></a>
+                    </div>
+                    <!-- END: Notifications -->
+                </div>
+                <!-- END: Top Bar -->
+            <div class="col-span-12 mt-8">
+                            <div class="intro-y flex items-center h-10">
+                                <h2 class="text-lg font-medium truncate mr-5">
+                                    Broj artikala po grupama
+                                </h2>
+                                <a href="" class="ml-auto flex text-theme-1 dark:text-theme-10"> <i data-feather="refresh-ccw" class="w-4 h-4 mr-3"></i> Reload Data </a>
+                            </div>
+                            <div class="grid grid-cols-12 gap-6 mt-5">
+                            {% if bra_num %}
+                                <div class="col-span-12 sm:col-span-6 xl:col-span-3 intro-y">
+                                    <div class="report-box zoom-in">
+                                        <div class="box p-5">
+                                            <div class="flex">
+                                                <center><i data-feather="archive" class="report-box__icon text-theme-1"></i></center>
+                                                <div class="ml-auto">
+                                                </div>
+                                            </div>
+                                            <div class="text-3xl font-bold leading-8 mt-6"><center>{{ bra_num }}</center></div>
+                                            <div class="text-base text-gray-600 mt-1"><center>{{ bra_info }}</center></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endif %}
+                            {% if set_num %}
+                                <div class="col-span-12 sm:col-span-6 xl:col-span-3 intro-y">
+                                    <div class="report-box zoom-in">
+                                        <div class="box p-5">
+                                            <div class="flex">
+                                                 <center><i data-feather="archive" class="report-box__icon text-theme-6"></i></center>
+                                                <div class="ml-auto">
+                                                </div>
+                                            </div>
+                                            <div class="text-3xl font-bold leading-8 mt-6"><center>{{ set_num }}</center></div>
+                                            <div class="text-base text-gray-600 mt-1"><center>{{ set_info }}</center></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endif %}
+                            {% if pant_num %}
+                                <div class="col-span-12 sm:col-span-6 xl:col-span-3 intro-y">
+                                    <div class="report-box zoom-in">
+                                        <div class="box p-5">
+                                            <div class="flex">
+                                                <center><i data-feather="archive" class="report-box__icon text-theme-12"></i></center>
+                                                <div class="ml-auto">
+                                                </div>
+                                            </div>
+                                            <div class="text-3xl font-bold leading-8 mt-6"><center>{{ pant_num }}</center></div>
+                                            <div class="text-base text-gray-600 mt-1"><center>{{ pant_info }}</center></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endif %}
+                            </div>
+                        </div>
+
+            <center>
+                <h1 class="intro-y text-lg font-medium mt-10">
+                    {{ name }}
+                </h1></center>
+                <div class="grid grid-cols-12 gap-6 mt-5">
+                    <div class="intro-y col-span-12 flex flex-wrap sm:flex-no-wrap items-center mt-2">
+                              <div class="text-center"> <a href="javascript:;" data-toggle="modal" data-target="#header-footer-modal-preview" class="button button--lg w-24 rounded-full mr-1 mb-2 bg-theme-1 text-white">Novi artikal</a> </div>
+                                        <div class="modal" id="header-footer-modal-preview">
+                                     <div class="modal__content">
+                                         <form method="POST" action="{{ url_for('add_item') }}">
+                                         <div class="p-5 grid grid-cols-12 gap-4 row-gap-3">
+                                             <div class="col-span-12 sm:col-span-6"> <label>Katogorija</label> <input required name="category" type="text" class="input w-full border mt-2 flex-1" placeholder="Katogorija"> </div>
+                                             <div class="col-span-12 sm:col-span-6"> <label>Naziv</label> <input required name="name" type="text" class="input w-full border mt-2 flex-1" placeholder="Naziv"> </div>
+                                             <div class="col-span-12 sm:col-span-6"> <label>Šifra artikla</label> <input required name="item_num" type="number" class="input w-full border mt-2 flex-1" placeholder="Šifra artikla"> </div>
+                                             <div class="col-span-12 sm:col-span-6"> <label>Veličina</label> <input name="size" type="text" class="input w-full border mt-2 flex-1" placeholder="Veličina">
+                                             </div><div class="col-span-12 sm:col-span-6"> <label>Količina</label> <input name="quantity" type="text" class="input w-full border mt-2 flex-1" placeholder="Količina"> </div>
+                                         </div>
+                                         <div class="px-5 py-3 text-right border-t border-gray-200 dark:border-dark-5">
+                                             <button type="submit" class="button w-24 rounded-full mr-1 mb-2 bg-theme-14 text-theme-10">Dodaj</button>
+                                         </div>
+                                         </form>
+                                     </div>
+                                 </div>
+                                <form method="POST" action="{{ url_for('search_num') }}">
+                                    <div class="w-full sm:w-auto mt-3 sm:mt-0 sm:ml-auto md:ml-0">
+                                        <div style="left: 970px" class="w-56 relative text-gray-700 dark:text-gray-300">
+                                            <input name="search" type="number" class="input w-56 box pr-10 placeholder-theme-13" placeholder="Šifra artikla">
+                                            <i class="w-4 h-4 absolute my-auto inset-y-0 mr-3 right-0" data-feather="search"></i>
+                                        </div>
+                                    </div>
+                                    </form>
+                                </div>
+                            {% with messages = get_flashed_messages() %}
+                              {% if messages %}
+                                {% for message in messages %}
+                                    <div class="ui small message black text-center">
+                                  <p>{{ message }}</p>
+                                    </div>
+                                {% endfor %}
+                              {% endif %}
+                            {% endwith %}
+                    <!-- BEGIN: Data List -->
+                    <div class="intro-y col-span-12 overflow-auto lg:overflow-visible">
+                        <table class="table table-report -mt-2">
+                            <thead>
+                                <tr>
+                                    <th class="whitespace-no-wrap">Kategorija</th>
+                                    <th class="whitespace-no-wrap">Marka / Model</th>
+                                    <th class="text-center whitespace-no-wrap">Šifra artikla</th>
+                                    <th class="text-center whitespace-no-wrap">Veličina</th>
+                                    <th class="text-center whitespace-no-wrap">Količina</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            {% for item in items %}
+                                <tr class="intro-x">
+                                    <form method="POST" action="{{ url_for('update', pk=item.id) }}">
+                                        <td
+                                        class="font-medium whitespace-no-wrap"><input name="category" type="text" value="{{ item.category|capitalize }}">
+                                    </td>
+                                    <td
+                                        class=" text-center font-medium whitespace-no-wrap"><input name="name" type="text" value="{{ item.name|capitalize }}">
+                                    </td>
+                                    <td class="text-center"><input class="text-center" name="item_num" type="number" value="{{ item.item_num }}"></td>
+                                    <td class="text-center"><input class="text-center" name="size" type="text" value="{{ item.size|upper }}"></td>
+                                    <td class="text-center"><input class="text-center" name="quantity" type="number" value="{{ item.quantity }}"></td>
+                                    <td class="table-report__action w-56">
+                                        <div class="flex justify-center items-center">
+                                            <button type="submit" class="flex items-center mr-3"> <i data-feather="check-square" class="w-4 h-4 mr-1"></i> Izmjeni </button>
+                                        </form>
+                                            <a class="flex items-center text-theme-6" onclick="return confirm('Potvrdi brisanje artikla {{ item.name }}');"  href="{{ url_for('delete', pk=item.id ) }}">
+                                                <i data-feather="trash-2" class="w-4 h-4 mr-1"></i> Obriši </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+
+            </div>
+
+        {% endblock %}
+

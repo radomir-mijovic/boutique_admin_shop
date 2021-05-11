@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="../../static/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../static/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="../../static/css/owl.carousel.css">
+    <link rel="stylesheet" type="text/css" href="../../static/css/chosen.css">
+    <link rel="stylesheet" type="text/css" href="../../static/css/lightbox.min.css">
+    <link rel="stylesheet" type="text/css" href="../../static/css/pe-icon-7-stroke.css">
+    <link rel="stylesheet" type="text/css" href="../../static/css/jquery.mCustomScrollbar.css">
+    <link rel="stylesheet" type="text/css" href="../../static/css/magnific-popup.css">
+    <link rel="stylesheet" type="text/css" href="../../static/css/style.css">
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Montserrat">
+    <link href='https://fonts.googleapis.com/css?family=Playfair+Display:400italic,400,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:300,100,100italic,300italic,400,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+</head>
+<body class="home">
+<div id="box-mobile-menu" class="box-mobile-menu full-height full-width">
+	<div class="box-inner">
+		<span class="close-menu"><span class="icon pe-7s-close"></span></span>
+	</div>
+</div>
+<div id="header-ontop" class="is-sticky"></div>
+<!-- Header -->
+<header id="header" class="header style1">
+    	<div class="top-header">
+		<div class="container">
+			<div class="inner">
+				<div class="main-menu-wapper">
+					<div class="row">
+						<div class="col-sm-8">
+							<ul class="boutique-nav main-menu clone-main-menu">
+								<li class="menu-item-has-children item-megamenu">
+									<a href="{{ url_for('index') }}">Home</a>
+								</li>
+								<li class="menu-item-has-children">
+									<a href="{{ url_for('bra_list') }}">BRUSEVI</a>
+								</li>
+								<li class="menu-item-has-children item-megamenu">
+									<a href="{{ url_for('sets_list') }}">KOMPLETI</a>
+								</li>
+								<li class="menu-item-has-children item-megamenu">
+									<a href="{{ url_for('panties_list') }}">GAĆICE</a>
+								</li>
+								<li class="menu-item-has-children">
+									<a href="#">PIDŽAME</a>
+								</li>
+                                <li class="menu-item-has-children">
+									<a href="#">Spavaćice</a>
+								</li>
+                                <li class="menu-item-has-children">
+									<a href="#">Čarape</a>
+								</li>
+							</ul>
+						</div>
+						<div class="col-sm-4">
+							<span class="mobile-navigation"><i class="fa fa-bars"></i></span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            {% for message in messages %}
+                <div class="ui small message black text-center">
+              <h4>{{ message }}</h4>
+                </div>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+		<div class="main-header">
+			<div class="row">
+				<div class="col-sm-12 col-md-12 col-lg-3">
+					<div class="logo">
+						<a href="{{ url_for('index') }}"><img src="../../static/images/logos/1.png" alt=""></a>
+					</div>
+				</div>
+				<div class="col-sm-12 col-md-12 col-lg-9">
+					<ul class="category-menu">
+						<li>
+							<a href="{{ url_for('bra_list') }}">
+							<img src="../../static/images/brus2.png" alt="">
+							Brusevi
+							</a>
+						</li>
+                        <li>
+							<a href="{{ url_for('sets_list') }}">
+							<img src="../../static/images/set.png" alt="">
+							Kompleti
+							</a>
+						</li>
+						<li>
+							<a href="{{ url_for('panties_list') }}">
+							<img src="../../static/images/panties1.png" alt="">
+							Gaćice
+							</a>
+						</li>
+                        <li>
+							<a href="#">
+							<img src="../../static/images/t-shirt.png" alt="">
+							Majice
+							</a>
+						</li>
+						<li>
+							<a href="#">
+							<img src="../../static/images/socks1-removebg-preview.png" alt="">
+							Čarape
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</header>
+<!-- ./Header -->
+
+
+{% block context %}
+
+{% endblock %}
+	<footer class="footer">
+		<div class="footer-top">
+			<div class="container">
+				<div class="row flex-flow">
+					<div class="col-sm-12 col-md-4 footer-sidebar">
+						<div class="widget contact-info">
+							<span class="text-primary PlayfairDisplay">Talk to Us Now !</span>
+							<h3 class="widget-title">Contact Us</h3>
+							<div class="content">
+								<p class="address">5701 Outlets at Tejon Pkwy, Tejon ranch CA 93203 UK.</p>
+								<p class="phone"><i class="fa fa-phone"></i> (+800) 6868 2268</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-12 col-md-4 footer-sidebar">
+					</div>
+					<div class="col-sm-12 col-md-4 footer-sidebar">
+						<div class="widget widget_social">
+							<span class="text-primary PlayfairDisplay">Talk to Us Now !</span>
+							<h3 class="widget-title">FOLLOW US</h3>
+							<div class="content">
+								<div class="social">
+			                        <a href="#"><i class="fa fa-facebook"></i></a>
+			                        <a href="#"><i class="fa fa-twitter"></i></a>
+			                        <a href="#"><i class="fa fa-google-plus"></i></a>
+			                        <a href="#"><i class="fa fa-instagram"></i></a>
+			                        <a href="#"><i class="fa fa-pinterest"></i></a>
+			                    </div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<a href="#" class="scroll_top" title="Scroll to Top" style="display: block;"><i class="fa fa-arrow-up"></i></a>
+	<script type="text/javascript" src="../../static/js/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="../../static/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../../static/js/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="../../static/js/chosen.jquery.min.js"></script>
+    <script type="text/javascript" src="../../static/js/Modernizr.js"></script>
+    <script type="text/javascript" src="../../static/js/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="../../static/js/lightbox.min.js"></script>
+	<script type="text/javascript" src="../../static/js/masonry.pkgd.min.js"></script>
+	<script type="text/javascript" src="../../static/js/imagesloaded.pkgd.min.js"></script>
+    <script type="text/javascript" src="../../static/js/isotope.pkgd.min.js"></script>
+	<script type="text/javascript" src="../../static/js/jquery.mCustomScrollbar.concat.min.js"></script>
+	<script type="text/javascript" src="../../static/js/jquery.parallax-1.1.3.js"></script>
+    <script type="text/javascript" src="../../static/js/jquery.magnific-popup.min.js"></script>
+	<script type="text/javascript" src="../../static/js/masonry.js"></script>
+	<script type="text/javascript" src="../../static/js/functions.js"></script>
+</body>
+</html>

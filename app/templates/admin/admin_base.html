@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+    <!-- BEGIN: Head -->
+    <head>
+        <meta charset="utf-8">
+        <link href="../../static/dist/images/logo.svg" rel="shortcut icon">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Midone admin is super flexible, powerful, clean & modern responsive tailwind admin template with unlimited possibilities.">
+        <meta name="keywords" content="admin template, Midone admin template, dashboard template, flat admin template, responsive admin template, web app">
+        <meta name="author" content="LEFT4CODE">
+        <title>My Secret - Admin</title>
+        <!-- BEGIN: CSS Assets-->
+        <link rel="stylesheet" href="{{ url_for('static', filename='dist/css/app.css') }}" />
+
+        <!-- END: CSS Assets-->
+    </head>
+    <!-- END: Head -->
+    <body class="app">
+        <!-- BEGIN: Mobile Menu -->
+        <div class="mobile-menu md:hidden">
+            <div class="mobile-menu-bar">
+                <a href="{{ url_for('admin') }}" class="flex mr-auto">
+                    <img alt="Midone Tailwind HTML Admin Template" class="w-6" src="../../static/dist/images/logo.svg">
+                </a>
+                <a href="javascript:;" id="mobile-menu-toggler"> <i data-feather="bar-chart-2" class="w-8 h-8 text-white transform -rotate-90"></i> </a>
+            </div>
+            <ul class="border-t border-theme-24 py-5 hidden">
+                <li>
+                    <a href="../shop/base.html" class="menu">
+                        <div class="menu__icon"> <i data-feather="home"></i> </div>
+                        <div class="menu__title"> Brusevi </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="side-menu-light-inbox.html" class="menu">
+                        <div class="menu__icon"> <i data-feather="inbox"></i> </div>
+                        <div class="menu__title"> Inbox </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="side-menu-light-file-manager.html" class="menu">
+                        <div class="menu__icon"> <i data-feather="hard-drive"></i> </div>
+                        <div class="menu__title"> File Manager </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="side-menu-light-point-of-sale.html" class="menu">
+                        <div class="menu__icon"> <i data-feather="credit-card"></i> </div>
+                        <div class="menu__title"> Point of Sale </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="side-menu-light-chat.html" class="menu">
+                        <div class="menu__icon"> <i data-feather="message-square"></i> </div>
+                        <div class="menu__title"> Chat </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="side-menu-light-post.html" class="menu">
+                        <div class="menu__icon"> <i data-feather="file-text"></i> </div>
+                        <div class="menu__title"> Post </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <!-- END: Mobile Menu -->
+        <div class="flex">
+            <!-- BEGIN: Side Menu -->
+            <nav class="side-nav">
+                <a href="{{ url_for('admin') }}" class="intro-x flex items-center pl-5 pt-4">
+                    <img class="w-6" src="../../static/images/items_logo.png">
+                    <span class="hidden xl:block text-white text-lg ml-3">Svi Artikli </span>
+                </a>
+                <a href="{{ url_for('customers') }}" class="intro-x flex items-center pl-5 pt-4">
+                    <img  class="w-6" src="../../static/images/user_logo3.png">
+                    <span class="hidden xl:block text-white text-lg ml-3"> Korisnici </span>
+                </a>
+                <div class="side-nav__devider my-6"></div>
+                <ul>
+                    <li>
+                        <a href="{{ url_for('admin_bra_list') }}" class="side-menu">
+                            <div class="side-menu__icon"> </div>
+                            <div class="side-menu__title"> Brusevi </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ url_for('admin_set_list') }}" class="side-menu">
+                            <div class="side-menu__icon"> </div>
+                            <div class="side-menu__title"> Kompleti </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ url_for('admin_panties_list') }}" class="side-menu">
+                            <div class="side-menu__icon"> </div>
+                            <div class="side-menu__title"> Gacice </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ url_for('admin_shirt_list') }}" class="side-menu">
+                            <div class="side-menu__icon"> </div>
+                            <div class="side-menu__title"> Majice </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ url_for('admin_socks_list') }}" class="side-menu">
+                            <div class="side-menu__icon"> </div>
+                            <div class="side-menu__title"> Čarape </div>
+                        </a>
+                    </li>
+
+                </ul>
+            </nav>
+
+            {% block content %}
+
+            {% endblock %}
+        </div>
+
+        <!-- BEGIN: JS Assets-->
+        <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
+        <script src="{{ url_for('static', filename='dist/js/app.js') }}"></script>
+        <!-- END: JS Assets-->
+    </body>
+</html>
